@@ -24,5 +24,8 @@ public class ArrayDesc {
     public void setMax(int max) {
         this.max = max;
     }
+    public Boolean minEqualsMax(){
+        return min==max;
+    }
 
 }

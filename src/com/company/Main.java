@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
@@ -8,12 +9,12 @@ public class Main {
         public static void main(String[] args) {
 //          int []a={1,5,3,7,11,8,-8,-26,4,20,50,1,0,1,1,5,555555};
 //           int []a={5,5};
-            int[] a =new int[1000000];
-            Random rand=new Random();
-            for (int i = 0; i <a.length ; i++) {
-                a[i]=rand.nextInt(1000);
-            }
-//            int []a=new int[]{7,8,9,4,0,4,6,8,10};
+//            int[] a =new int[1000000];
+//            Random rand=new Random();
+//            for (int i = 0; i <a.length ; i++) {
+//                a[i]=rand.nextInt(1000);
+//            }
+            int []a=new int[]{7,8,9,4,0,4,6,8,10};
             for (int y:a) {
                 System.out.print(y+"\t");
             }
@@ -35,16 +36,14 @@ public class Main {
             medSort(a,0, a.length-1);
 
         }
+
         private static  void medSort(int []a, int start, int end){
             // the termination condition
             if(((end-start)+1)<2) return;
 
             ArrayDesc arrayDesc=minMax(a,start,end);
-//            int min=minMax(a,start,end)[0];
-//
-//            int max =minMax(a,start,end)[1];
 
-            if (arrayDesc.getMin()==arrayDesc.getMax())return; // termination condition to avoid the infinite loop when all elements are identical
+            if (arrayDesc.minEqualsMax())return; // termination condition to avoid the infinite loop when all elements are identical
 
             int median =(arrayDesc.getMin()+arrayDesc.getMax())/2;
 
@@ -56,12 +55,11 @@ public class Main {
                 temp[i-start]=a[i];
             }
 
-            for (int i = 0; i <temp.length ; i++) {
-                if(temp[i]<=median) { //  add first
-                    a[firstAdd++]=temp[i];
-                }
-                else {
-                    a[lastAdd--]=temp[i]; //add first
+            for (int number : temp) {
+                if (number <= median) { //  add first
+                    a[firstAdd++] = number;
+                } else {
+                    a[lastAdd--] = number; //add first
                 }
 
             }
