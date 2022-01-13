@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
+// # of elements is 1000000
 
+// medsort :    101 302 200ns
+// quickSort :  363 031 000ns
         public static void main(String[] args) {
 //          int []a={1,5,3,7,11,8,-8,-26,4,20,50,1,0,1,1,5,555555};
 //           int []a={5,5};
