@@ -5,13 +5,27 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-
+// # of elements is 1000000
+//
+//    medsort :    101 302 200ns
+//    quickSort :  363 031 000ns
+//
+//// worst case of medsort
+//
+//    medsort :    77 192 300ns
+//    quickSort :  3 208 154 300ns
+//
+//// another worst case
+//
+//    medsort :    115 228 400ns
+//    quickSort :  360 885 500ns
         public static void main(String[] args) {
 //          int []a={1,5,3,7,11,8,-8,-26,4,20,50,1,0,1,1,5,555555};
 //           int []a={5,5};
             int[] a =new int[1000000];
             Random rand=new Random();
-            for (int i = 0; i <a.length ; i++) {
+            a[0]=999999;
+            for (int i = 1; i <a.length ; i++) {
                 a[i]=rand.nextInt(1000);
             }
             for (int y:a) {
@@ -20,7 +34,8 @@ public class Main {
             System.out.println();
             long startDate=System.nanoTime();
 
-            insertionSort(a);
+            quickSort(a);
+//            medSort(a);
 
             long endDate=System.nanoTime();
 
