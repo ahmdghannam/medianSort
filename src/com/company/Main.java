@@ -1,7 +1,6 @@
 package com.company;
 
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
@@ -14,13 +13,14 @@ public class Main {
             for (int i = 0; i <a.length ; i++) {
                 a[i]=rand.nextInt(1000);
             }
+//            int []a=new int[]{7,8,9,4,0,4,6,8,10};
             for (int y:a) {
                 System.out.print(y+"\t");
             }
             System.out.println();
             long startDate=System.nanoTime();
 
-            insertionSort(a);
+            medSort(a);
 
             long endDate=System.nanoTime();
 
@@ -39,13 +39,14 @@ public class Main {
             // the termination condition
             if(((end-start)+1)<2) return;
 
-            int min=minMax(a,start,end)[0];
+            ArrayDesc arrayDesc=minMax(a,start,end);
+//            int min=minMax(a,start,end)[0];
+//
+//            int max =minMax(a,start,end)[1];
 
-            int max =minMax(a,start,end)[1];
+            if (arrayDesc.getMin()==arrayDesc.getMax())return; // termination condition to avoid the infinite loop when all elements are identical
 
-            if (min==max)return; // termination condition to avoid the infinite loop when all elements are identical
-
-            int median =(min+max)/2;
+            int median =(arrayDesc.getMin()+arrayDesc.getMax())/2;
 
             int firstAdd=start,lastAdd=end;
 
@@ -73,7 +74,7 @@ public class Main {
 
 
             }
-        private static int[] minMax(int[] a, int start, int end) {
+        private static ArrayDesc minMax(int[] a, int start, int end) {
             int min=a[start];
             int max =a[start];
             for (int i = start; i <= end; i++) {
@@ -81,7 +82,7 @@ public class Main {
                 if(a[i]<min)min=a[i];
             }
 
-            return new int[]{min,max};
+            return new ArrayDesc(min,max);
         }
 
         // quick sort
