@@ -7,31 +7,29 @@ public class Sorting {
 
     }
     public static  void medSort(int []a, int start, int end){
-        // the termination condition
-        if(((end-start)+1)<2) return;
+
+        int length=((end-start)+1);
+
+        // the first termination condition
+        if(length<2) return;
 
         ArrayDesc arrayDesc=minMax(a,start,end);
 
         if (arrayDesc.minEqualsMax())return; // termination condition to avoid the infinite loop when all elements are identical
 
-        int median =(arrayDesc.getMin()+arrayDesc.getMax())/2;
-
         int firstAdd=start,lastAdd=end;
 
-        int [] temp=new int[end-start+1];
+        int [] temp=new int[length];
 
-        for (int i = start; i <=end ; i++) {
-            temp[i-start]=a[i];
-        }
+        // copy array's values from a[] to a temporary array
+        copyArrays(a, start, end, temp);
 
         for (int number : temp) {
-            if (number <= median) { //  add first
+            if (number <= arrayDesc.getMedian()) //  add first
                 a[firstAdd++] = number;
-            } else {
+            else
                 a[lastAdd--] = number; //add first
-            }
-
-        }
+             }
 
         // left
         medSort(a,start,firstAdd-1);
@@ -41,6 +39,13 @@ public class Sorting {
 
 
     }
+
+    private static void copyArrays(int[] a, int start, int end, int[] temp) {
+        for (int i = start; i <= end; i++) {
+            temp[i- start]= a[i];
+        }
+    }
+
     public static ArrayDesc minMax(int[] a, int start, int end) {
         int min=a[start];
         int max =a[start];

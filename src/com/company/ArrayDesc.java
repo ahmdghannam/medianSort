@@ -27,5 +27,7 @@ public class ArrayDesc {
     public Boolean minEqualsMax(){
         return min==max;
     }
-
+   public int getMedian(){
+        return ((min+max)/2);
+   }
 }
