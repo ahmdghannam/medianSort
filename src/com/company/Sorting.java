@@ -17,26 +17,26 @@ public class Sorting {
 
         if (arrayDesc.minEqualsMax())return; // termination condition to avoid the infinite loop when all elements are identical
 
-        int firstAdd=start,lastAdd=end;
-
-        int [] temp=new int[length];
-
-        // copy array's values from a[] to a temporary array
-        copyArrays(a, start, end, temp);
-
-        for (int number : temp) {
-            if (number <= arrayDesc.getMedian()) //  add first
-                a[firstAdd++] = number;
-            else
-                a[lastAdd--] = number; //add first
-             }
-
+        int addLast=end;
+        int i = start;
+        while (i < addLast+1){
+            if (a[i] > arrayDesc.getMedian())
+                swap(i,addLast--,a);
+            else i++;
+        }
         // left
-        medSort(a,start,firstAdd-1);
+        medSort(a,start,addLast);
         // right
-        medSort(a,lastAdd+1,end);
+        medSort(a,addLast+1,end);
 
 
+
+    }
+
+    public static void swap(int index, int index2, int[] a) {
+        int t=a[index2];
+        a[index2]=a[index];
+        a[index]=t;
 
     }
 
@@ -58,10 +58,10 @@ public class Sorting {
     }
 
     // quick sort
-    public static void quickSort(int arr[]){
+    public static void quickSort(int[] arr){
         quickSort(arr, 0,arr.length-1);
     }
-    public static int partition(int arr[], int low, int high){
+    public static int partition(int[] arr, int low, int high){
         int pivot = arr[high];
         int a=low-1;
         for(int i=low;i<high;i++){
@@ -77,7 +77,7 @@ public class Sorting {
         arr[high] = temp;
         return a+1;
     }
-    public static void quickSort(int arr[],int low,int high){
+    public static void quickSort(int[] arr, int low, int high){
         if(low<high){
             int p = partition(arr,low,high);
             quickSort(arr,low,p-1);
@@ -86,7 +86,7 @@ public class Sorting {
     }
 
     // insertion sort
-    public static void insertionSort(int arr[]) {
+    public static void insertionSort(int[] arr) {
         int n = arr.length;
         for (int i=1; i<n; ++i)
         {
@@ -103,5 +103,9 @@ public class Sorting {
             }
             arr[j+1] = key;
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("in sorting");
     }
 }

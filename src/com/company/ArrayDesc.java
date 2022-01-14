@@ -31,4 +31,6 @@ public class ArrayDesc {
     public int getMedian(){
         return ((min+max)/2);
    }
+
+
 }
