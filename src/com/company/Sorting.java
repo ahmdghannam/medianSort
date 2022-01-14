@@ -104,7 +104,27 @@ public class Sorting {
             arr[j+1] = key;
         }
     }
+   // selection sort
+    public static void selectionSort(int[] arr) {
+        int small;
+        for (int i = 0; i <arr.length - 1; i++)
+        {
+            small = i;
+            for (int j = i + 1; j < arr.length; j++)
+            {
+                //if current position is less than previous smallest
+                if (arr[j] < arr[small])
+                {
+                    small = j;
 
+                    //swap values
+                    int temp = arr[i];
+                    arr[i] = arr[small];
+                    arr[small] = temp;
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
         System.out.println("in sorting");
     }
