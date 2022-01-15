@@ -8,15 +8,23 @@ public class Sorting {
     }
     public static  void medSort(int []a, int start, int end){
 
+        //length of the array portion
         int length=((end-start)+1);
 
         // the first termination condition
-        if(length<2) return;
+        if(length<=2){
+        if(length==2&&a[start]>a[end])
+               swap(start,end,a);
+           return;
+        }
 
+        // finding min and max in one loop
         ArrayDesc arrayDesc=minMax(a,start,end);
 
-        if (arrayDesc.minEqualsMax())return; // termination condition to avoid the infinite loop when all elements are identical
+        // termination condition to avoid the infinite loop when all elements are identical
+        if (arrayDesc.minEqualsMax())return;
 
+        // actual medSort
         int addLast=end;
         int i = start;
         while (i < addLast+1){
@@ -24,6 +32,7 @@ public class Sorting {
                 swap(i,addLast--,a);
             else i++;
         }
+
         // left
         medSort(a,start,addLast);
         // right
@@ -33,19 +42,18 @@ public class Sorting {
 
     }
 
+    // stuff
     public static void swap(int index, int index2, int[] a) {
         int t=a[index2];
         a[index2]=a[index];
         a[index]=t;
 
     }
-
     private static void copyArrays(int[] a, int start, int end, int[] temp) {
         for (int i = start; i <= end; i++) {
             temp[i- start]= a[i];
         }
     }
-
     public static ArrayDesc minMax(int[] a, int start, int end) {
         int min=a[start];
         int max =a[start];
@@ -125,7 +133,5 @@ public class Sorting {
             }
         }
     }
-    public static void main(String[] args) {
-        System.out.println("in sorting");
-    }
+
 }
