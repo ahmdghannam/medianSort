@@ -1,6 +1,7 @@
 package com.company;
 
-public class Sorting {
+public abstract class Sorting {
+
     // median sort
     public static void medSort(int[] a) {
         medSort(a,0, a.length-1);
