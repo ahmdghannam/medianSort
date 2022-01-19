@@ -42,6 +42,51 @@ public abstract class Sorting {
 
 
     }
+    public static void avgSort(int[] a) {
+        avgSort(a,0, a.length-1);
+
+    }
+    public static  void avgSort(int []a, int start, int end){
+
+        //length of the array portion
+        int length=((end-start)+1);
+
+        // the first termination condition
+        if(length<=2){
+            if(length==2&&a[start]>a[end])
+                swap(start,end,a);
+            return;
+        }
+
+        // finding min and max in one loop
+        int avg=avg(a,start,end);
+
+        // actual medSort
+        int addLast=end;
+        int i = start;
+        while (i < addLast+1){
+            if (a[i] >avg)
+                swap(i,addLast--,a);
+            else i++;
+        }
+
+        // left
+        medSort(a,start,addLast);
+        // right
+        medSort(a,addLast+1,end);
+
+
+
+    }
+
+    private static int avg(int[] a, int start, int end) {
+        int sum=0;
+        int length=((end-start)+1);
+        for (int s:a) {
+            sum+=s;
+        }
+        return sum/length;
+    }
 
     // stuff
     public static void swap(int index, int index2, int[] a) {

@@ -9,19 +9,20 @@ public abstract class Main {
         int[] a = new int[1000000];
         addRandomNumbers(a);
 //        int[] a = new int[]{10,3,7,5,4,11};
-//        int []a=new int[]{7,8,9,4,0,4,6,8,10};
+//        int []a=new int[]{7,8,9,4,0,4,4,6,8,10};
         printArray(a);
         System.out.println();
 
         long startDate = System.nanoTime();
 
+//        Sorting.avgSort(a);
         Sorting.medSort(a);
-
         long endDate = System.nanoTime();
         printArray(a);
         System.out.println(isItSorted(a));
         System.out.println();
         System.out.println("the time is : " + (endDate - startDate) + "ns");
+
     }
 
     private static boolean isItSorted(int[] a) {
