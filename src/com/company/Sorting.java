@@ -7,6 +7,14 @@ public abstract class Sorting {
         medSort(a,0, a.length-1);
 
     }
+    public static void parallelMedSort(int[] a) {
+        try {
+            parallelMedSort(a,0, a.length-1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
     public static  void medSort(int []a, int start, int end){
 
         //length of the array portion
@@ -42,7 +50,49 @@ public abstract class Sorting {
 
 
     }
+    public static void parallelMedSort(int []a, int start, int end) throws InterruptedException {
 
+        //length of the array portion
+        int length=((end-start)+1);
+
+        // the first termination condition
+        if(length<=2){
+            if(length==2&&a[start]>a[end])
+                swap(start,end,a);
+            return;
+        }
+
+        // finding min and max in one loop
+        ArrayDesc arrayDesc=minMax(a,start,end);
+
+        // termination condition to avoid the infinite loop when all elements are identical
+        if (arrayDesc.minEqualsMax())return;
+
+        // actual medSort
+        int addLast=end;
+        int i = start;
+        while (i < addLast+1){
+            if (a[i] > arrayDesc.getMedian())
+                swap(i,addLast--,a);
+            else i++;
+        }
+
+        // left
+        int finalAddLast = addLast;
+        Runnable runnable=()->{
+        medSort(a,start, finalAddLast);
+        };
+        Thread thread=new Thread(runnable);
+        thread.join();
+        // right
+        int finalAddLast1 = addLast;
+        Runnable runnable1=()-> {
+            medSort(a, finalAddLast1 + 1, end);
+        };
+        Thread thread1=new Thread(runnable1);
+         thread1.join();
+
+    }
     // average sort
     public static void avgSort(int[] a) {
         avgSort(a,0, a.length-1);
