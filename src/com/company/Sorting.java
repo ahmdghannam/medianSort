@@ -42,6 +42,8 @@ public abstract class Sorting {
 
 
     }
+
+    // average sort
     public static void avgSort(int[] a) {
         avgSort(a,0, a.length-1);
 
@@ -78,7 +80,6 @@ public abstract class Sorting {
 
 
     }
-
     private static int avg(int[] a, int start, int end) {
         int sum=0;
         int length=((end-start)+1);
@@ -158,7 +159,8 @@ public abstract class Sorting {
             arr[j+1] = key;
         }
     }
-   // selection sort
+
+    // selection sort
     public static void selectionSort(int[] arr) {
         int small;
         for (int i = 0; i <arr.length - 1; i++)
@@ -180,4 +182,47 @@ public abstract class Sorting {
         }
     }
 
+    //merge sort
+    public static void mergeSort(int[] a, int n) {
+        if (n < 2) {
+            return;
+        }
+        int mid = n / 2;
+        int[] l = new int[mid];
+        int[] r = new int[n - mid];
+
+        for (int i = 0; i < mid; i++) {
+            l[i] = a[i];
+        }
+        for (int i = mid; i < n; i++) {
+            r[i - mid] = a[i];
+        }
+        mergeSort(l, mid);
+        mergeSort(r, n - mid);
+
+        merge(a, l, r, mid, n - mid);
+    }
+
+    public static void merge(int[] a, int[] l, int[] r, int left, int right) {
+
+        int i = 0, j = 0, k = 0;
+        while (i < left && j < right) {
+            if (l[i] <= r[j]) {
+                a[k++] = l[i++];
+            }
+            else {
+                a[k++] = r[j++];
+            }
+        }
+        while (i < left) {
+            a[k++] = l[i++];
+        }
+        while (j < right) {
+            a[k++] = r[j++];
+        }
+    }
+
+    public static void mergeSort(int[] a) {
+        mergeSort(a,a.length);
+    }
 }
