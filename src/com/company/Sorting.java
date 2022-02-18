@@ -6,27 +6,56 @@ public abstract class Sorting {
 
     // median sort
     public static void medSort(int[] a) {
-        medSort(a,0, a.length-1);
-
+        ArrayDesc arrayDesc =minMax(a,0,a.length-1);
+        medSort(a,0, a.length-1,arrayDesc.getMin(),arrayDesc.getMax());
     }
-    public static void parallelMedSort(int[] a) {
-        try {
-            parallelMedSort(a,0, a.length-1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public static  void medSort(int []a, int start, int end,int min,int max){
+
+        //length of the array portion
+        int length=((end-start)+1);
+        int median=(min+max)/2;
+        // the first termination condition
+        if(length<=2){
+            if(length==2&&a[start]>a[end])
+                swap(start,end,a);
+            return;
         }
 
+        // termination condition to avoid the infinite loop when all elements are identical
+        if (min==max)return;
+
+        // actual medSort
+        int addLast=end;
+        int i = start;
+        while (i < addLast+1){
+            if (a[i] > median)
+                swap(i,addLast--,a);
+            else i++;
+        }
+
+        // left
+        medSort(a,start,addLast,min,median);
+        // right
+        medSort(a,addLast+1,end,median+1,max);
+
+
+
     }
-    public static  void medSort(int []a, int start, int end){
+
+    public static void medSortBefore(int[] a) {
+        medSortBefore(a,0, a.length-1);
+
+    }
+    public static  void medSortBefore(int []a, int start, int end){
 
         //length of the array portion
         int length=((end-start)+1);
 
         // the first termination condition
         if(length<=2){
-        if(length==2&&a[start]>a[end])
-               swap(start,end,a);
-           return;
+            if(length==2&&a[start]>a[end])
+                swap(start,end,a);
+            return;
         }
 
         // finding min and max in one loop
@@ -45,11 +74,19 @@ public abstract class Sorting {
         }
 
         // left
-        medSort(a,start,addLast);
+        medSortBefore(a,start,addLast);
         // right
-        medSort(a,addLast+1,end);
+        medSortBefore(a,addLast+1,end);
 
 
+
+    }
+    public static void parallelMedSort(int[] a) {
+        try {
+            parallelMedSort(a,0, a.length-1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
     public static void parallelMedSort(int []a, int start, int end) throws InterruptedException {
@@ -82,18 +119,18 @@ public abstract class Sorting {
         // left
         int finalAddLast = addLast;
         Runnable runnable=()->{
-        medSort(a,start, finalAddLast);
+//        medSort(a,start, finalAddLast);
         };
         Thread thread=new Thread(runnable);
         thread.join();
 
         // right
         int finalAddLast1 = addLast;
-        Runnable runnable1=()-> {
-            medSort(a, finalAddLast1 + 1, end);
-        };
-        Thread thread1=new Thread(runnable1);
-         thread1.join();
+//        Runnable runnable1=()-> {
+//            medSort(a, finalAddLast1 + 1, end);
+//        };
+//        Thread thread1=new Thread(runnable1);
+//         thread1.join();
 
     }
     // average sort
@@ -125,10 +162,10 @@ public abstract class Sorting {
             else i++;
         }
 
-        // left
-        medSort(a,start,addLast);
-        // right
-        medSort(a,addLast+1,end);
+//        // left
+//        medSort(a,start,addLast);
+//        // right
+//        medSort(a,addLast+1,end);
 
 
 
@@ -164,7 +201,16 @@ public abstract class Sorting {
 
         return new ArrayDesc(min,max);
     }
+    public static int[] minMaxArr(int[] a, int start, int end) {
+        int min=a[start];
+        int max =a[start];
+        for (int i = start; i <= end; i++) {
+            if(a[i]>max)max=a[i];
+            if(a[i]<min)min=a[i];
+        }
 
+        return new int []{min,max};
+    }
     // quick sort
     public static void quickSort(int[] arr){
         quickSort(arr, 0,arr.length-1);
