@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Sorting {
 
     // median sort
@@ -84,6 +86,7 @@ public abstract class Sorting {
         };
         Thread thread=new Thread(runnable);
         thread.join();
+
         // right
         int finalAddLast1 = addLast;
         Runnable runnable1=()-> {
@@ -168,26 +171,25 @@ public abstract class Sorting {
     }
     public static int partition(int[] arr, int low, int high){
         int pivot = arr[high];
-        int a=low-1;
+        int addFirst=low;
+
         for(int i=low;i<high;i++){
             if(arr[i]<pivot){
-                a++;
-                int temp = arr[a];
-                arr[a] = arr[i];
-                arr[i] = temp;
+                swap(addFirst++,i,arr);
             }
         }
-        int temp = arr[a+1];
-        arr[a+1] = pivot;
-        arr[high] = temp;
-        return a+1;
+        swap(addFirst,high,arr);
+        return addFirst;
+
     }
     public static void quickSort(int[] arr, int low, int high){
-        if(low<high){
+
+        if(low<high){     //checks if the array is more than one item
             int p = partition(arr,low,high);
             quickSort(arr,low,p-1);
             quickSort(arr,p+1,high);
         }
+
     }
 
     // insertion sort
@@ -252,7 +254,6 @@ public abstract class Sorting {
 
         merge(a, l, r, mid, n - mid);
     }
-
     public static void merge(int[] a, int[] l, int[] r, int left, int right) {
 
         int i = 0, j = 0, k = 0;
@@ -271,8 +272,51 @@ public abstract class Sorting {
             a[k++] = r[j++];
         }
     }
-
     public static void mergeSort(int[] a) {
         mergeSort(a,a.length);
     }
+
+    // binary search
+    public static int binarySearch(int []a,int k){
+        return binarySearch(a,k,0,a.length-1);
+    }
+    public static int binarySearch(int []a,int k,int start,int end){
+        int mid=(start+end)/2;
+        if(a[mid]==k) return mid;
+        return a[mid]>k ? binarySearch(a,k,start,mid-1):binarySearch(a,k,mid+1,end);
+    }
+
+    //selection problem
+    public static int selectionProblem(int []a,int k){
+        int c=0;
+        for (int item:a) {
+            if(item<k)
+                c++;
+        }
+        return c;
+    }
+
+    // euclid greatest common divisor, decrease by variable
+    public static  int gcd(int a,int b){
+
+        return b==0 ? a : gcd(b,a%b);
+
+    }
+
+    // fibonacci series
+    public static int fibBruteForce(int x){
+        return x==0||x==1?x:fibBruteForce(x-1)+fibBruteForce(x-2);
+    }
+    public static int fibDynamicProgramming(int x){
+        ArrayList<Integer> fib=new ArrayList<>();
+        fib.add(0);
+        fib.add(1);
+        for (int i = 2; i <= x; i++) {
+              fib.add(i,fib.get(i-1)+fib.get(i-2));
+        }
+    return fib.get(x);
+    }
+
+
+
 }

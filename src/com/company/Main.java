@@ -8,19 +8,20 @@ public abstract class Main {
 //        int[] a = {5, 5};
         int[] a = new int[100000];
         addRandomNumbers(a);
-//        int[] a = new int[]{10,3,7,5,4,11};
+//       int[] a = new int[]{10,3,7,5,4,11};
+//        int[] a = new int[]{4,5,1,6,9,7};
 //        int []a=new int[]{7,8,9,4,0,4,4,6,8,10};
         printArray(a);
         System.out.println();
         //med sort
         long startDate = System.nanoTime();
-        Runnable runnable=()->{
 
-            Sorting.parallelMedSort(a);
 
-        };
-        Thread thread=new Thread(runnable);
-        thread.join();
+            Sorting.quickSort(a);
+
+
+//        Thread thread=new Thread(runnable);
+//        thread.join();
         long endDate = System.nanoTime();
         printArray(a);
         System.out.println(isItSorted(a));
