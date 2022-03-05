@@ -1,5 +1,4 @@
 # medianSort
-improvmentOfQuickSort
 
 the median sort is a sorting algorithms similar to quick sort and trys to get better performance by choosing better pivot to avoid the worst case sinario that quick sort faces 
 
