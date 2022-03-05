@@ -32,3 +32,8 @@ and if the length of the portion is 2 it will be swaped if needed and then retur
 ![image](https://user-images.githubusercontent.com/83182202/156875121-0ea7ca29-de40-44a6-bdcb-f549d192ce3c.png)
 
 ### left recursive call 
+![image](https://user-images.githubusercontent.com/83182202/156881381-137c71a3-dbd6-4653-b401-8b61b8015ff1.png)
+
+### final result 
+![image](https://user-images.githubusercontent.com/83182202/156881358-cc2982f6-ae7d-444d-b35b-14f17c315288.png)
+
