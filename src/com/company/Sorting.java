@@ -322,25 +322,7 @@ public abstract class Sorting {
         mergeSort(a,a.length);
     }
 
-    // binary search
-    public static int binarySearch(int []a,int k){
-        return binarySearch(a,k,0,a.length-1);
-    }
-    public static int binarySearch(int []a,int k,int start,int end){
-        int mid=(start+end)/2;
-        if(a[mid]==k) return mid;
-        return a[mid]>k ? binarySearch(a,k,start,mid-1):binarySearch(a,k,mid+1,end);
-    }
-
-    //selection problem
-    public static int selectionProblem(int []a,int k){
-        int c=0;
-        for (int item:a) {
-            if(item<k)
-                c++;
-        }
-        return c;
-    }
+ 
 
 
 
