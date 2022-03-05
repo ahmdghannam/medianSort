@@ -16,6 +16,31 @@ the method will be re called for the left and the right side of the new array.
 the termination will be done if the length of the array portion less that 2 or elements are equal which is represented by  if (min==max)return; 
 and if the length of the portion is 2 it will be swaped if needed and then return.
 
+### test 
+
+// bound  of random 1000000000
+
+1 million items 
+
+quicksort :            124 894 400ns
+enhanced medsort :     140  108  700ns
+
+100k items 
+
+quicksort :  19 625 300 ns  
+medsort :    22 721 600 ns
+
+1k items 
+
+quicksort :  1 411 900ns
+medsort :    1 581 900ns
+
+100 000 random items 
+
+median sort : 49 389 900ns
+quick sort :  18 210 800ns
+
+
 ### illustration:
 
 ### first call 
