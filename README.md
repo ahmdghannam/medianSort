@@ -45,7 +45,7 @@ quick sort :  18 210 800ns
 
 ### first call 
 
-![image](https://user-images.githubusercontent.com/83182202/156874477-a449efa2-903e-4f16-a47d-4a920d779d9d.png)
+![image](https://user-images.githubusercontent.com/83182202/156881846-f9d4df04-973b-427c-8a78-d894b094aaf9.png)
 
 ### the items that are greater than the median are added last 
 ![image](https://user-images.githubusercontent.com/83182202/156874652-bb2cdcec-0350-431c-8065-361ca6819cb1.png)
