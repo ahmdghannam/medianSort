@@ -342,27 +342,6 @@ public abstract class Sorting {
         return c;
     }
 
-    // euclid greatest common divisor, decrease by variable
-    public static  int gcd(int a,int b){
-
-        return b==0 ? a : gcd(b,a%b);
-
-    }
-
-    // fibonacci series
-    public static int fibBruteForce(int x){
-        return x==0||x==1?x:fibBruteForce(x-1)+fibBruteForce(x-2);
-    }
-    public static int fibDynamicProgramming(int x){
-        ArrayList<Integer> fib=new ArrayList<>();
-        fib.add(0);
-        fib.add(1);
-        for (int i = 2; i <= x; i++) {
-              fib.add(i,fib.get(i-1)+fib.get(i-2));
-        }
-    return fib.get(x);
-    }
-
 
 
 }
