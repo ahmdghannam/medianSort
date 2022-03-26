@@ -1,4 +1,5 @@
 package com.company;
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Main {
@@ -6,6 +7,8 @@ public abstract class Main {
     public static void main(String[] args) throws InterruptedException {
 //        int[] a = {1, 5, 3, 7, 11, 8, -8, -26, 4, 20, 50, 1, 0, 1, 1, 5, 555555};
 //        int[] a = {5, 5};
+
+
         int[] a = new int[1000000];
         a[0]=1;
         addRandomNumbers(a);
