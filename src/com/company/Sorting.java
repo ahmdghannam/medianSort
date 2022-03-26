@@ -322,46 +322,7 @@ public abstract class Sorting {
         mergeSort(a,a.length);
     }
 
-    // binary search
-    public static int binarySearch(int []a,int k){
-        return binarySearch(a,k,0,a.length-1);
-    }
-    public static int binarySearch(int []a,int k,int start,int end){
-        int mid=(start+end)/2;
-        if(a[mid]==k) return mid;
-        return a[mid]>k ? binarySearch(a,k,start,mid-1):binarySearch(a,k,mid+1,end);
-    }
-
-    //selection problem
-    public static int selectionProblem(int []a,int k){
-        int c=0;
-        for (int item:a) {
-            if(item<k)
-                c++;
-        }
-        return c;
-    }
-
-    // euclid greatest common divisor, decrease by variable
-    public static  int gcd(int a,int b){
-
-        return b==0 ? a : gcd(b,a%b);
-
-    }
-
-    // fibonacci series
-    public static int fibBruteForce(int x){
-        return x==0||x==1?x:fibBruteForce(x-1)+fibBruteForce(x-2);
-    }
-    public static int fibDynamicProgramming(int x){
-        ArrayList<Integer> fib=new ArrayList<>();
-        fib.add(0);
-        fib.add(1);
-        for (int i = 2; i <= x; i++) {
-              fib.add(i,fib.get(i-1)+fib.get(i-2));
-        }
-    return fib.get(x);
-    }
+ 
 
 
 

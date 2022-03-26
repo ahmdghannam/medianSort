@@ -22,8 +22,6 @@ public abstract class Main {
 
             Sorting.medSort(a);
 
-//        Thread thread=new Thread(runnable);
-//        thread.join();
         long endDate = System.nanoTime();
         printArray(a);
         System.out.println(isItSorted(a));
@@ -54,18 +52,3 @@ public abstract class Main {
         }
         System.out.println();
     }
-//        int addLast=a.length-1;
-//        for (int i = 0; i < addLast; ) {
-//            if (a[i] > 7) {
-////                Sorting.swap(i,addLast--,a);
-//                int t=a[addLast];
-//                a[addLast]=a[i];
-//                a[i]=t;
-//                addLast--;
-//            } else {
-//                i++;
-//            }
-//            System.out.println("iteration:"+i);
-//            printArray(a);
-//        }
-}
