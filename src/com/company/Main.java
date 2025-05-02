@@ -1,4 +1,5 @@
 package com.company;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -10,7 +11,7 @@ public abstract class Main {
 
 
         int[] a = new int[1000000];
-        a[0]=1;
+        a[0] = 1;
         addRandomNumbers(a);
 //       int[] a = new int[]{10,3,7,5,4,11};
 //        int[] a = new int[]{4,5,1,6,9,7};
@@ -20,7 +21,7 @@ public abstract class Main {
         //med sort
         long startDate = System.nanoTime();
 
-            Sorting.medSort(a);
+        Sorting.medSort(a);
 
         long endDate = System.nanoTime();
         printArray(a);
@@ -34,7 +35,7 @@ public abstract class Main {
     private static boolean isItSorted(int[] a) {
 
         for (int i = 1; i < a.length; i++) {
-            if (a[i]<a[i-1])return false;
+            if (a[i] < a[i - 1]) return false;
         }
         return true;
     }
@@ -42,7 +43,7 @@ public abstract class Main {
     private static void addRandomNumbers(int[] aa) {
         Random rand = new Random();
         for (int i = 1; i < aa.length; i++) {
-            aa[i] = rand.nextInt(100000000,1000000000);
+            aa[i] = rand.nextInt(100000000, 1000000000);
         }
     }
 
@@ -52,3 +53,4 @@ public abstract class Main {
         }
         System.out.println();
     }
+}

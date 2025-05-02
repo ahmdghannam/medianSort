@@ -9,15 +9,20 @@ public abstract class Sorting {
         ArrayDesc arrayDesc =minMax(a,0,a.length-1);
         medSort(a,0, a.length-1,arrayDesc.getMin(),arrayDesc.getMax());
     }
-    public static  void medSort(int []a, int start, int end,int min,int max){
 
+    public int[] sortArray(int[] nums) {
+        var minMax = minMax(nums);
+        medSort(nums,0, nums.length-1,minMax[0],minMax[1]);
+        return nums;
+    }
+    public static void medSort(int[] a, int start, int end, double min, double max) {
         //length of the array portion
-        int length=((end-start)+1);
-        int median=(min+max)/2;
+        int length = ((end - start) + 1);
+        var median = (min + max) / 2.0;
         // the first termination condition
-        if(length<=2){
-            if(length==2&&a[start]>a[end])
-                swap(start,end,a);
+        if (length <= 2) {
+            if (length == 2 && a[start] > a[end])
+                swap(start, end, a);
             return;
         }
 
@@ -25,23 +30,28 @@ public abstract class Sorting {
         if (min==max)return;
 
         // actual medSort
-        int addLast=end;
+        int addLast = end;
         int i = start;
-        while (i < addLast+1){
+        while (i < addLast + 1) {
             if (a[i] > median)
-                swap(i,addLast--,a);
+                swap(i, addLast--, a);
             else i++;
         }
 
         // left
-        medSort(a,start,addLast,min,median);
+        medSort(a, start, addLast, min, median);
         // right
-        medSort(a,addLast+1,end,median+1,max);
-
-
-
+        medSort(a, addLast + 1, end, median + 1, max);
     }
-
+    public int[] minMax(int[] nums){
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for(int num:nums){
+            if(num>max) max = num;
+            if(num<min) min = num;
+        }
+        return new int[]{min,max};
+    }
     public static void medSortBefore(int[] a) {
         medSortBefore(a,0, a.length-1);
 
