@@ -1,9 +1,9 @@
-# medianSort
+# MedianSort
 
 The median sort is a sorting algorithm similar to quicksort and tries to achieve better performance by choosing a better pivot to avoid the worst-case scenario that quicksort faces. 
 The sort is done in-place, without allocating extra memory for new arrays.
 
-### the mechanism :
+### The mechanism :
 
 The first call to medSort finds the minimum and maximum elements in the list using a single loop. It then calls the overloaded medSort method, which takes the array, start index, end index, and the previously calculated minimum and maximum values as input.
 
@@ -13,7 +13,7 @@ The method recursively calls itself on the left and right portions of the modifi
 
 The recursion terminates when the length of the current array portion is less than 2, or when all elements are equal (i.e., min == max). If the portion contains exactly two elements, they are swapped if necessary, and the function returns.
 
-### test 
+### Test 
 
 // bound  of random 1000000000
 
@@ -38,7 +38,7 @@ median sort : 49 389 900ns
 quick sort :  18 210 800ns
 
 
-### illustration:
+### Illustration:
 
 ### first call 
 
