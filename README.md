@@ -1,19 +1,17 @@
 # medianSort
 
-the median sort is a sorting algorithms similar to quick sort and trys to get better performance by choosing better pivot to avoid the worst case sinario that quick sort faces 
+The median sort is a sorting algorithm similar to quicksort and tries to achieve better performance by choosing a better pivot to avoid the worst-case scenario that quicksort faces. 
+The sort is done in-place, without allocating extra memory for new arrays.
 
 ### the mechanism :
 
-first call of the medSort will find the min and max items in the list, thats done using one loop and then call the the other medSort which input is the array,start point ,end point
-,min item ,max item which is calculated before .
+The first call to medSort finds the minimum and maximum elements in the list using a single loop. It then calls the overloaded medSort method, which takes the array, start index, end index, and the previously calculated minimum and maximum values as input.
 
-this method call will starts by calculating the median of the array portion form start to end which is equal to (min+max)/2 
-and then it will pass throw the array element by element and if the element is greater than the median it will be added to the end of the array .
+This method begins by calculating the median of the array portion from start to end, using the formula (min + max) / 2. It then iterates through the array elements one by one. If an element is greater than the median, it is moved to the end of the array.
 
-the method will be re called for the left and the right side of the new array.
+The method recursively calls itself on the left and right portions of the modified array.
 
-the termination will be done if the length of the array portion less that 2 or elements are equal which is represented by  if (min==max)return; 
-and if the length of the portion is 2 it will be swaped if needed and then return.
+The recursion terminates when the length of the current array portion is less than 2, or when all elements are equal (i.e., min == max). If the portion contains exactly two elements, they are swapped if necessary, and the function returns.
 
 ### test 
 
